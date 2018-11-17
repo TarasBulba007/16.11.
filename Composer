@@ -1,0 +1,11 @@
+{
+    "require": {
+        "nikic/php-parser": "dev-master"
+    },
+    "repositories": [
+        {
+           "type": "vcs",
+                  "url": "http://..."
+        }
+    ]
+}
