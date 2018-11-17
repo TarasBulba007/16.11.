@@ -1,0 +1,39 @@
+interface IObserver{
+  
+  function Changing($var, $argument);
+}
+
+interface IObservable{
+
+  function addObserver($observer);
+}
+
+class UserList implements IObservable{
+  
+  private $_observers = array();
+
+  public function addCustomer($name) {
+  
+    foreach($this->_observers as $obs)
+      $obs->Changing($this, $name);
+  }
+
+  public function addObserver( $observer ){
+  
+    $this->_observers []= $observer;
+  }
+}
+
+class UserListLogins implements IObserver{
+
+  public function Changing( $var, $argument ){
+  
+    echo( "'$argument' added to user listn" );
+  }
+}
+
+/*
+$newUser = new UserList();
+$newUser->addObserver( new UserListLogins() );
+$newUser->addCustomer( "Taras" );
+*/
